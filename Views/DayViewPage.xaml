@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxsch="clr-namespace:DevExpress.Maui.Scheduler;assembly=DevExpress.Maui.Scheduler"
+             Title="{Binding Title}"
+             IconImageSource="scheduler"
+             xmlns:viewmodel="clr-namespace:DXMauiApp1.ViewModels"
+             BackgroundColor="{StaticResource NormalBackgroundColor}"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="true"
+             x:Class="DXMauiApp1.Views.DayViewPage">
+    <ContentPage.Content>
+        <dxsch:DayView Tap="DayView_Tap" Start="{Binding Date}">
+            <!--<dxsch:DayView.AllDayAppointmentTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="Black" CornerRadius="2">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:DayViewViewModel}}, Path=SelectEventCommand}}"/>
+                        </Frame.GestureRecognizers>
+                        <Label Text="{Binding Title}" TextColor="Black"/>
+                    </Frame>
+                </DataTemplate>
+            </dxsch:DayView.AllDayAppointmentTemplate>-->
+            <dxsch:DayView.DataStorage>
+                <dxsch:SchedulerDataStorage>
+                    <dxsch:SchedulerDataStorage.DataSource>
+                        <dxsch:DataSource AppointmentsSource="{Binding DayEvents}">
+                            <dxsch:DataSource.AppointmentMappings>
+                                <dxsch:AppointmentMappings 
+                                    Id="Id" 
+                                    Start="StartDateTime" 
+                                    End="EndDateTime" 
+                                    Subject="Title"
+                                    Description="Description"
+                                    />      
+                            </dxsch:DataSource.AppointmentMappings>
+                        </dxsch:DataSource>
+                    </dxsch:SchedulerDataStorage.DataSource>
+                </dxsch:SchedulerDataStorage>
+            </dxsch:DayView.DataStorage>
+        </dxsch:DayView>
+    </ContentPage.Content>
+</ContentPage>
