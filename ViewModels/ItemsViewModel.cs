@@ -1,4 +1,5 @@
 ﻿using DXMauiApp1.Models;
+using DXMauiApp1.Services;
 using System.Collections.ObjectModel;
 
 namespace DXMauiApp1.ViewModels
@@ -8,7 +9,7 @@ namespace DXMauiApp1.ViewModels
         Item _selectedItem;
 
 
-        public ItemsViewModel()
+        public ItemsViewModel(EventTypeService eventTypeService) : base(eventTypeService)
         {
             Title = "Browse";
             Items = new ObservableCollection<Item>();

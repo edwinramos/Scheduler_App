@@ -24,16 +24,24 @@
         <dxsch:MonthView.DataStorage>
                 <dxsch:SchedulerDataStorage>
                     <dxsch:SchedulerDataStorage.DataSource>
-                        <dxsch:DataSource AppointmentsSource="{Binding Items}">
+                        <dxsch:DataSource AppointmentsSource="{Binding Items}" AppointmentLabelsSource="{Binding EventTypes}">
                             <dxsch:DataSource.AppointmentMappings>
                                 <dxsch:AppointmentMappings 
-                                    Id="Id" 
+                                    Id="Id"
+                                    LabelId="EventTypeId"
                                     Start="StartDateTime" 
                                     End="EndDateTime" 
                                     Subject="Title"
                                     Description="Description"
+                                    Location="Location"
                                     />      
                             </dxsch:DataSource.AppointmentMappings>
+                            <dxsch:DataSource.AppointmentLabelMappings>
+                                <dxsch:AppointmentLabelMappings
+                                Caption="Caption"
+                                Color="Color"
+                                Id="Id"/>
+                            </dxsch:DataSource.AppointmentLabelMappings>
                         </dxsch:DataSource>
                     </dxsch:SchedulerDataStorage.DataSource>
                 </dxsch:SchedulerDataStorage>

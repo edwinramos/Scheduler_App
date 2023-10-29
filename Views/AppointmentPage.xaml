@@ -4,25 +4,25 @@
              x:Class="DXMauiApp1.Views.AppointmentPage"
              Title="{Binding Title}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="edit" />
-        <ToolbarItem IconImageSource="trash" />
+        <ToolbarItem IconImageSource="edit" Command="{Binding EditCommand}"/>
+        <ToolbarItem IconImageSource="trash" Command="{Binding DeleteCommand}"/>
     </ContentPage.ToolbarItems>
     <ScrollView>
         <Grid Padding="20" RowSpacing="5" RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="30,*">
 
-            <Frame BackgroundColor="Green" CornerRadius="50" HeightRequest="5" WidthRequest="5" HorizontalOptions="Start"/>
-            <Label Grid.Column="1" Text="{Binding Appointment.Title}" FontSize="Large" HorizontalOptions="Start"/>
+            <Frame BackgroundColor="{Binding EventTypeColor}" CornerRadius="50" HeightRequest="5" WidthRequest="5" HorizontalOptions="Start"/>
+            <Label Grid.Column="1" Text="{Binding EventModel.Title}" FontSize="Large" HorizontalOptions="Start"/>
 
             <HorizontalStackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Start">
-                <Label Text="{Binding Appointment.StartDateTime, StringFormat='{0:dddd, MMM dd}'}"/>
+                <Label Text="{Binding EventModel.StartDateTime, StringFormat='{0:dddd, MMM dd}'}"/>
                 <Label Text=" - "/>
-                <Label Text="{Binding Appointment.EndDateTime, StringFormat='{0:dddd, MMM dd}'}"/>
+                <Label Text="{Binding EventModel.EndDateTime, StringFormat='{0:dddd, MMM dd}'}"/>
             </HorizontalStackLayout>
 
             <BoxView Grid.Row="2" Grid.Column="1" HeightRequest="1" Color="MediumPurple" HorizontalOptions="FillAndExpand"/>
 
-            <Label Grid.Row="3" Grid.Column="1" Text="#Repeat Weekly" FontSize="Medium" HorizontalOptions="Start"/>
-            <Label Grid.Row="5" Grid.Column="1" Text="#Status: Tentative" FontSize="Medium" HorizontalOptions="Start"/>
+            <Label Grid.Row="3" Grid.Column="1" Text="{Binding EventModel.Location, StringFormat='Location: {0}'}" FontSize="Medium" HorizontalOptions="Start"/>
+            <!--<Label Grid.Row="5" Grid.Column="1" Text="#Status: Tentative" FontSize="Medium" HorizontalOptions="Start"/>-->
         </Grid>
     </ScrollView>
 </ContentPage>

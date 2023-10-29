@@ -37,12 +37,15 @@ namespace DXMauiApp1
             builder.Services.AddSingleton<AppointmentViewModel>();
             builder.Services.AddSingleton<DayViewViewModel>();
             builder.Services.AddSingleton<SchedulerViewModel>();
+            builder.Services.AddSingleton<EditEventViewModel>();
 
             builder.Services.AddTransient<SchedulerPage>();
             builder.Services.AddTransient<DayViewPage>();
             builder.Services.AddTransient<AppointmentPage>();
+            builder.Services.AddTransient<EditEventPage>();
 
             builder.Services.AddSingleton<EventService>();
+            builder.Services.AddSingleton<EventTypeService>();
 
             return builder.Build();
         }

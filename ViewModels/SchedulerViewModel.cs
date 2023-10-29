@@ -10,7 +10,7 @@ namespace DXMauiApp1.ViewModels
     public partial class SchedulerViewModel : BaseViewModel
     {
         EventService eventService;
-        public SchedulerViewModel(EventService eventService)
+        public SchedulerViewModel(EventService eventService, EventTypeService eventTypeService) : base (eventTypeService)
         {
             Title = "Scheduler";
             Items = new ObservableCollection<Event>();
@@ -28,8 +28,9 @@ namespace DXMauiApp1.ViewModels
                 });
         }
 
-        async public Task OnAppearing()
+        public async override Task OnAppearing()
         {
+            await base.OnAppearing();
             IEnumerable<Event> events = await eventService.GetMonthEvents(DateTime.Today.Month);
             Items.Clear();
             foreach (Event ev in events)

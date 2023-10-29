@@ -1,5 +1,6 @@
 ﻿using DevExpress.Maui.DataForm;
 using DXMauiApp1.Models;
+using DXMauiApp1.Services;
 
 namespace DXMauiApp1.ViewModels
 {
@@ -11,7 +12,7 @@ namespace DXMauiApp1.ViewModels
         string text;
         string description;
 
-        public NewItemViewModel()
+        public NewItemViewModel(EventTypeService eventTypeService) : base(eventTypeService)
         {
             Title = "New Item";
             SaveCommand = new Command(OnSave, ValidateSave);

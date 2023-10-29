@@ -1,11 +1,13 @@
-﻿namespace DXMauiApp1.ViewModels
+﻿using DXMauiApp1.Services;
+
+namespace DXMauiApp1.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
         string userName;
         string password;
 
-        public LoginViewModel()
+        public LoginViewModel(EventTypeService eventTypeService) : base(eventTypeService)
         {
             LoginCommand = new Command(OnLoginClicked, ValidateLogin);
             PropertyChanged +=

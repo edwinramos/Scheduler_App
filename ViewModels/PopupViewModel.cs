@@ -1,8 +1,10 @@
-﻿namespace DXMauiApp1.ViewModels
+﻿using DXMauiApp1.Services;
+
+namespace DXMauiApp1.ViewModels
 {
     public class PopupViewModel : BaseViewModel
     {
-        public PopupViewModel()
+        public PopupViewModel(EventTypeService eventTypeService) : base(eventTypeService)
         {
             Title = "Popup";
         }

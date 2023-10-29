@@ -1,9 +1,14 @@
-﻿using System.Web;
+﻿using DXMauiApp1.Services;
+using System.Web;
 
 namespace DXMauiApp1.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel, IQueryAttributable
     {
+        public ItemDetailViewModel(EventTypeService eventTypeService) : base(eventTypeService)
+        {
+
+        }
         public const string ViewName = "ItemDetailPage";
 
         string text;

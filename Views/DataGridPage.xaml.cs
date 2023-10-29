@@ -1,14 +1,15 @@
-﻿using DXMauiApp1.ViewModels;
+﻿using DXMauiApp1.Services;
+using DXMauiApp1.ViewModels;
 
 namespace DXMauiApp1.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DataGridPage : ContentPage
     {
-        public DataGridPage()
+        public DataGridPage(EventTypeService eventTypeService)
         {
             InitializeComponent();
-            BindingContext = ViewModel = new DataGridViewModel();
+            BindingContext = ViewModel = new DataGridViewModel(eventTypeService);
         }
 
         DataGridViewModel ViewModel { get; }

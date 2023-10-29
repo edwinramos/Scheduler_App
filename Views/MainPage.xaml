@@ -24,8 +24,6 @@
     
     <ShellContent Title="DataGrid" Icon="grid"
                   ContentTemplate="{DataTemplate local:DataGridPage}"/>
-    <ShellContent Title="Charts" Icon="charts"
-                  ContentTemplate="{DataTemplate local:ChartsPage}" />
     <ShellContent Title="Popup" Icon="popup"
                   ContentTemplate="{DataTemplate local:PopupPage}" />-->
     

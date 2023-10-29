@@ -6,13 +6,12 @@ namespace DXMauiApp1.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SchedulerPage : ContentPage
     {
+        SchedulerViewModel ViewModel { get; }
         public SchedulerPage(SchedulerViewModel vm)
         {
             InitializeComponent();
             BindingContext = ViewModel = vm;
         }
-
-        SchedulerViewModel ViewModel { get; }
 
         protected override async void OnAppearing()
         {

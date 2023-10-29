@@ -2,14 +2,14 @@ using DXMauiApp1.ViewModels;
 
 namespace DXMauiApp1.Views;
 
-public partial class AppointmentPage : ContentPage
+public partial class EditEventPage : ContentPage
 {
-    AppointmentViewModel ViewModel { get; }
-    public AppointmentPage(AppointmentViewModel vm)
-    {
-        InitializeComponent();
+    EditEventViewModel ViewModel { get; }
+    public EditEventPage(EditEventViewModel vm)
+	{
+		InitializeComponent();
         BindingContext = ViewModel = vm;
-    }
+	}
 
     protected override async void OnAppearing()
     {

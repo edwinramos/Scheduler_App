@@ -1,11 +1,12 @@
 ﻿using DXMauiApp1.Models;
+using DXMauiApp1.Services;
 using System.Collections.ObjectModel;
 
 namespace DXMauiApp1.ViewModels
 {
     public class DataGridViewModel : BaseViewModel
     {
-        public DataGridViewModel()
+        public DataGridViewModel(EventTypeService eventTypeService) : base(eventTypeService)
         {
             Title = "DataGridView";
             Items = new ObservableCollection<Item>();

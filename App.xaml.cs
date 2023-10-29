@@ -16,6 +16,7 @@ namespace DXMauiApp1
             Routing.RegisterRoute(typeof(NewItemPage).FullName, typeof(NewItemPage));
             Routing.RegisterRoute(nameof(DayViewPage), typeof(DayViewPage));
             Routing.RegisterRoute(nameof(AppointmentPage), typeof(AppointmentPage));
+            Routing.RegisterRoute(nameof(EditEventPage), typeof(EditEventPage));
             MainPage = new MainPage();
         }
     }
