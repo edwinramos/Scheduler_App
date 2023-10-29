@@ -55,8 +55,10 @@ namespace DXMauiApp1.Services
                     var evt = new Event();
                     evt.Title = "Successful Day";
                     evt.Description = "the day you're free";
-                    evt.StartDateTime = DateTime.Now;
-                    evt.EndDateTime = DateTime.Now.AddHours(1);
+                    evt.StartDate = DateTime.Now;
+                    evt.StartTime = DateTime.Now.TimeOfDay;
+                    evt.EndDate = DateTime.Now.AddHours(1);
+                    evt.EndTime = DateTime.Now.AddHours(1).TimeOfDay;
                     evt.Location = "Santo Domingo";
                     evt.EventTypeId = (await db.Table<EventType>().FirstOrDefaultAsync(x=>x.Caption == "Personal")).Id;
                     await db.InsertAsync(evt);

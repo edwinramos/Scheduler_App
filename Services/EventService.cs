@@ -22,7 +22,7 @@ namespace DXMauiApp1.Services
             await Init();
             //var query = db.Table<Event>().Where(x => x.StartDateTime.Month == month);
             var events = await db.Table<Event>().ToListAsync();
-            return events.Where(x => x.StartDateTime.Month == month && x.EndDateTime.Month == month);
+            return events.Where(x => x.StartDate.Month == month && x.EndDate.Month == month);
         }
         public async Task<IEnumerable<Event>> GetDateEvent(DateTime date)
         {
@@ -30,10 +30,13 @@ namespace DXMauiApp1.Services
 
             //var query = db.Table<Event>().Where(x => x.StartDateTime <= date && x.EndDateTime >= date);
             var events = await db.Table<Event>().ToListAsync();
-            return events.Where(x => x.StartDateTime.Date <= date.Date && x.EndDateTime.Date >= date.Date);
+            return events.Where(x => x.StartDate.Date <= date.Date && x.EndDate.Date >= date.Date);
         }
         public async Task SaveEvent(Event evt)
         {
+            evt.StartDate = evt.StartDate.Date.Add(evt.StartTime);
+            evt.EndDate = evt.EndDate.Date.Add(evt.EndTime);
+
             await Init();
             if (evt.Id == 0)
                 await db.InsertAsync(evt);

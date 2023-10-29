@@ -29,8 +29,8 @@
                                 <dxsch:AppointmentMappings 
                                     Id="Id" 
                                     LabelId="EventTypeId"
-                                    Start="StartDateTime" 
-                                    End="EndDateTime" 
+                                    Start="StartDate" 
+                                    End="EndDate" 
                                     Subject="Title"
                                     Description="Description"
                                     Location="Location"

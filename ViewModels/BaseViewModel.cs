@@ -35,9 +35,13 @@ namespace DXMauiApp1.ViewModels
 
         public virtual async Task OnAppearing()
         {
-            foreach (var item in await eventTypeService.GetAllEventTypes())
+            if (!EventTypes.Any())
             {
-                EventTypes.Add(item);
+                foreach (var item in await eventTypeService.GetAllEventTypes())
+                {
+                    item.Color = Color.FromArgb(item.ColorCode);
+                    EventTypes.Add(item);
+                }
             }
         }
     }

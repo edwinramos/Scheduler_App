@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DXMauiApp1.Views.EditEventPage"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
              Title="{Binding Title}">
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="check" Command="{Binding SaveCommand}"/>
@@ -10,10 +11,32 @@
         <VerticalStackLayout>
             <Grid Padding="20" RowSpacing="5" RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="30,*">
                 <Image Source="t_letter" HeightRequest="20"/>
-                <Entry Grid.Column="1" Text="{Binding EventModel.Title}" />
+                <dxe:TextEdit Grid.Column="1"
+                    Text="{Binding EventModel.Title}"
+                    LabelText="Title"
+                    ErrorText="Title is required"
+                    PlaceholderText="Enter title"/>
                 <BoxView Grid.Row="1" Grid.Column="1" HeightRequest="1" Color="MediumPurple" HorizontalOptions="FillAndExpand"/>
+                
                 <Image Grid.Row="2" Source="location" HeightRequest="20"/>
-                <Entry Grid.Row="2" Grid.Column="1" Text="{Binding EventModel.Location}" />
+                <dxe:TextEdit Grid.Row="2" Grid.Column="1"
+                    Text="{Binding EventModel.Location}"
+                    LabelText="Location"
+                    ErrorText="Location is required"
+                    PlaceholderText="Location title"/>
+
+                <Image Source="palette" Grid.Row="3" HeightRequest="20"/>
+                <dxe:ComboBoxEdit Grid.Row="3" Grid.Column="1" ItemsSource="{Binding EventTypes}" SelectedValue="{Binding EventModel.EventTypeId}" ValueMember="Id" 
+                  DisplayMember="Caption" LabelText="Label">
+                    <dxe:ComboBoxEdit.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="*,*">
+                                <Label Padding="10" Text="{Binding Caption}" FontAttributes="Bold" />
+                                <Frame Grid.Column="1" BackgroundColor="{Binding Color}" CornerRadius="50" HeightRequest="5" WidthRequest="5" HorizontalOptions="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </dxe:ComboBoxEdit.ItemTemplate>
+                </dxe:ComboBoxEdit>
             </Grid>
 
             <BoxView HeightRequest="1" Color="MediumPurple" HorizontalOptions="FillAndExpand"/>
@@ -25,7 +48,18 @@
                 </HorizontalStackLayout>
                 <Switch Grid.Column="1" IsToggled="{Binding EventModel.AllDay}" />
 
-                <BoxView Grid.Row="1" Grid.Column="1" HeightRequest="1" Color="MediumPurple" HorizontalOptions="FillAndExpand"/>
+                <HorizontalStackLayout Grid.Row="1" Grid.Column="1">
+                    <DatePicker Date="{Binding EventModel.StartDate, StringFormat='{0:dddd, MMM dd}'}" HorizontalOptions="Start"/>
+                    <TimePicker Time="{Binding EventModel.StartTime}" HorizontalOptions="End"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Grid.Row="2" Grid.Column="1">
+                    <DatePicker Date="{Binding EventModel.EndDate, StringFormat='{0:dddd, MMM dd}'}" HorizontalOptions="Start"/>
+                    <TimePicker Time="{Binding EventModel.EndTime, StringFormat='{0:hh:mm}'}" HorizontalOptions="End"/>
+                </HorizontalStackLayout>
+
+
+                <BoxView Grid.Row="5" Grid.Column="1" HeightRequest="1" Color="MediumPurple" HorizontalOptions="FillAndExpand"/>
 
             </Grid>
         </VerticalStackLayout>

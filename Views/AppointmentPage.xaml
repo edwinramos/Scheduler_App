@@ -14,9 +14,9 @@
             <Label Grid.Column="1" Text="{Binding EventModel.Title}" FontSize="Large" HorizontalOptions="Start"/>
 
             <HorizontalStackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Start">
-                <Label Text="{Binding EventModel.StartDateTime, StringFormat='{0:dddd, MMM dd}'}"/>
+                <Label Text="{Binding EventModel.StartDate, StringFormat='{0:dddd, MMM dd}'}"/>
                 <Label Text=" - "/>
-                <Label Text="{Binding EventModel.EndDateTime, StringFormat='{0:dddd, MMM dd}'}"/>
+                <Label Text="{Binding EventModel.EndDate, StringFormat='{0:dddd, MMM dd}'}"/>
             </HorizontalStackLayout>
 
             <BoxView Grid.Row="2" Grid.Column="1" HeightRequest="1" Color="MediumPurple" HorizontalOptions="FillAndExpand"/>

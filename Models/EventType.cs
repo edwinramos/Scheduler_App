@@ -14,6 +14,6 @@ namespace DXMauiApp1.Models
         public string Caption { get; set; }
         public string ColorCode { get; set; }
         [Ignore]
-        public object Color { get; set; }
+        public Color Color { get; set; }
     }
 }

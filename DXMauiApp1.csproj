@@ -45,6 +45,7 @@
 	  <None Remove="Resources\Images\clock.svg" />
 	  <None Remove="Resources\Images\edit.svg" />
 	  <None Remove="Resources\Images\location.svg" />
+	  <None Remove="Resources\Images\palette.svg" />
 	  <None Remove="Resources\Images\plus.svg" />
 	  <None Remove="Resources\Images\trash.svg" />
 	  <None Remove="Resources\Images\t_letter.svg" />
