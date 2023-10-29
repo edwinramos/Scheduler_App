@@ -28,6 +28,14 @@
                 <Image Source="palette" Grid.Row="3" HeightRequest="20"/>
                 <dxe:ComboBoxEdit Grid.Row="3" Grid.Column="1" ItemsSource="{Binding EventTypes}" SelectedValue="{Binding EventModel.EventTypeId}" ValueMember="Id" 
                   DisplayMember="Caption" LabelText="Label">
+                    <dxe:ComboBoxEdit.DisplayItemTemplate>
+                        <DataTemplate>
+                            <HorizontalStackLayout>
+                                <Label Padding="10" Text="{Binding Caption}" FontAttributes="Bold" />
+                                <Frame BackgroundColor="{Binding Color}" CornerRadius="50" HeightRequest="5" WidthRequest="5" HorizontalOptions="Center"/>
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </dxe:ComboBoxEdit.DisplayItemTemplate>
                     <dxe:ComboBoxEdit.ItemTemplate>
                         <DataTemplate>
                             <Grid ColumnDefinitions="*,*">
@@ -46,17 +54,18 @@
                     <Image Source="clock" HeightRequest="20" />
                     <Label Text="All Day" Margin="0,13,0,0" />
                 </HorizontalStackLayout>
-                <Switch Grid.Column="1" IsToggled="{Binding EventModel.AllDay}" />
+                
+                <Switch Grid.Column="1" IsToggled="{Binding EventModel.AllDay, Mode=TwoWay}" Toggled="Switch_HandlerChanged"/>
 
-                <HorizontalStackLayout Grid.Row="1" Grid.Column="1">
-                    <DatePicker Date="{Binding EventModel.StartDate, StringFormat='{0:dddd, MMM dd}'}" HorizontalOptions="Start"/>
-                    <TimePicker Time="{Binding EventModel.StartTime}" HorizontalOptions="End"/>
-                </HorizontalStackLayout>
+                <Grid ColumnDefinitions="1.5*,*" Grid.Row="1" Grid.Column="1">
+                    <dxe:DateEdit Date="{Binding EventModel.StartDate, Mode=TwoWay}" HorizontalOptions="Start"/>
+                    <dxe:TimeEdit Grid.Column="1" TimeSpan="{Binding EventModel.StartTime, Mode=TwoWay}" IsVisible="{Binding NotAllDay, Mode=TwoWay}" TimeFormatMode="HourFormat12" HorizontalOptions="End"/>
+                </Grid>
 
-                <HorizontalStackLayout Grid.Row="2" Grid.Column="1">
-                    <DatePicker Date="{Binding EventModel.EndDate, StringFormat='{0:dddd, MMM dd}'}" HorizontalOptions="Start"/>
-                    <TimePicker Time="{Binding EventModel.EndTime, StringFormat='{0:hh:mm}'}" HorizontalOptions="End"/>
-                </HorizontalStackLayout>
+                <Grid ColumnDefinitions="1.5*,*" Grid.Row="2" Grid.Column="1">
+                    <dxe:DateEdit Date="{Binding EventModel.EndDate, Mode=TwoWay}" HorizontalOptions="Start"/>
+                    <dxe:TimeEdit Grid.Column="1" TimeSpan="{Binding EventModel.EndTime, Mode=TwoWay}" IsVisible="{Binding NotAllDay, Mode=TwoWay}" TimeFormatMode="HourFormat12" HorizontalOptions="End"/>
+                </Grid>
 
 
                 <BoxView Grid.Row="5" Grid.Column="1" HeightRequest="1" Color="MediumPurple" HorizontalOptions="FillAndExpand"/>

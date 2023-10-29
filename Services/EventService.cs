@@ -34,6 +34,12 @@ namespace DXMauiApp1.Services
         }
         public async Task SaveEvent(Event evt)
         {
+            if (evt.AllDay)
+            {
+                evt.StartTime = new TimeSpan();
+                evt.EndTime = new TimeSpan();
+            }
+
             evt.StartDate = evt.StartDate.Date.Add(evt.StartTime);
             evt.EndDate = evt.EndDate.Date.Add(evt.EndTime);
 

@@ -11,23 +11,14 @@
              x:Class="DXMauiApp1.Views.SchedulerPage">
     <ContentPage.Content>
         <dxsch:MonthView Tap="MonthView_Tap">
-            <!--<dxsch:MonthView.CellTemplate>
-                <DataTemplate>
-                    <Frame BorderColor="LightBlue" CornerRadius="2">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SchedulerViewModel}}, Path=SelectDayCommand}}"/>
-                        </Frame.GestureRecognizers>
-                        <Label Text="{Binding Title}" TextColor="Black"/>
-                    </Frame>
-                </DataTemplate>
-            </dxsch:MonthView.CellTemplate>-->
-        <dxsch:MonthView.DataStorage>
+            <dxsch:MonthView.DataStorage>
                 <dxsch:SchedulerDataStorage>
                     <dxsch:SchedulerDataStorage.DataSource>
                         <dxsch:DataSource AppointmentsSource="{Binding Items}" AppointmentLabelsSource="{Binding EventTypes}">
                             <dxsch:DataSource.AppointmentMappings>
                                 <dxsch:AppointmentMappings 
                                     Id="Id"
+                                    AllDay="AllDay"
                                     LabelId="EventTypeId"
                                     Start="StartDate" 
                                     End="EndDate" 

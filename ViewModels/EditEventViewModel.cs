@@ -16,6 +16,10 @@ namespace DXMauiApp1.ViewModels
     public partial class EditEventViewModel : BaseViewModel
     {
         EventService eventService;
+
+        [ObservableProperty]
+        bool notAllDay;
+
         [ObservableProperty]
         int eventId;
 
@@ -23,11 +27,8 @@ namespace DXMauiApp1.ViewModels
         Event eventModel;
         public EditEventViewModel(EventService eventService, EventTypeService eventTypeService) : base(eventTypeService)
         {
-            if (EventId != 0)
-                Title = "Edit Event";
-            else
-                Title = "New Event";
-
+            Title = "Manage Events";
+            
             this.eventService = eventService;
         }
 
@@ -36,17 +37,18 @@ namespace DXMauiApp1.ViewModels
         {
             await eventService.SaveEvent(EventModel);
             await Shell.Current.GoToAsync("..");
-            //await Shell.Current.GoToAsync($"{nameof(EditEventPage)}", true,
-            //    new Dictionary<string, object>
-            //    {
-            //    { "EventId", Appointment.Id }
-            //    });
         }
 
+        public void ToggleAllDayAsync()
+        {
+            if (EventModel != null)
+                NotAllDay = !EventModel.AllDay;
+        }
         public async override Task OnAppearing()
         {
             await base.OnAppearing();
             EventModel = await eventService.GetEventById(EventId);
+            NotAllDay = !EventModel.AllDay;
         }
     }
 }

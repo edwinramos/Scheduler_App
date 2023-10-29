@@ -16,4 +16,9 @@ public partial class EditEventPage : ContentPage
         base.OnAppearing();
         await ViewModel.OnAppearing();
     }
+
+    private void Switch_HandlerChanged(object sender, EventArgs e)
+    {
+        ViewModel.ToggleAllDayAsync();
+    }
 }
