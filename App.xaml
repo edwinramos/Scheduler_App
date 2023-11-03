@@ -6,7 +6,7 @@
              windows:Application.ImageDirectory="Assets">
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="Primary">#512BD4</Color>
+            <Color x:Key="Primary">Orange</Color>
             <Color x:Key="PrimaryLight">#E7E3FD</Color>
             <Color x:Key="NormalText">#55575c</Color>
             <Color x:Key="NormalHeaderText">#55575c</Color>

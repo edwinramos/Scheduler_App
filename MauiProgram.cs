@@ -46,6 +46,7 @@ namespace DXMauiApp1
 
             builder.Services.AddSingleton<EventService>();
             builder.Services.AddSingleton<EventTypeService>();
+            builder.Services.AddSingleton<EventRepeatedService>();
 
             return builder.Build();
         }

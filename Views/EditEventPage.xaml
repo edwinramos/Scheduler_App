@@ -17,7 +17,7 @@
                     ErrorText="Title is required"
                     PlaceholderText="Enter title"/>
                 <BoxView Grid.Row="1" Grid.Column="1" HeightRequest="1" Color="MediumPurple" HorizontalOptions="FillAndExpand"/>
-                
+
                 <Image Grid.Row="2" Source="location" HeightRequest="20"/>
                 <dxe:TextEdit Grid.Row="2" Grid.Column="1"
                     Text="{Binding EventModel.Location}"
@@ -49,12 +49,12 @@
 
             <BoxView HeightRequest="1" Color="MediumPurple" HorizontalOptions="FillAndExpand"/>
 
-            <Grid Padding="20" RowSpacing="5" RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="30,*">
+            <Grid Padding="20" RowSpacing="5" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="30,*">
                 <HorizontalStackLayout Spacing="10">
                     <Image Source="clock" HeightRequest="20" />
                     <Label Text="All Day" Margin="0,13,0,0" />
                 </HorizontalStackLayout>
-                
+
                 <Switch Grid.Column="1" IsToggled="{Binding EventModel.AllDay, Mode=TwoWay}" Toggled="Switch_HandlerChanged"/>
 
                 <Grid ColumnDefinitions="1.5*,*" Grid.Row="1" Grid.Column="1">
@@ -66,9 +66,16 @@
                     <dxe:DateEdit Date="{Binding EventModel.EndDate, Mode=TwoWay}" HorizontalOptions="Start"/>
                     <dxe:TimeEdit Grid.Column="1" TimeSpan="{Binding EventModel.EndTime, Mode=TwoWay}" IsVisible="{Binding NotAllDay, Mode=TwoWay}" TimeFormatMode="HourFormat12" HorizontalOptions="End"/>
                 </Grid>
-
-
                 <BoxView Grid.Row="5" Grid.Column="1" HeightRequest="1" Color="MediumPurple" HorizontalOptions="FillAndExpand"/>
+
+                <Image Grid.Row="6" Source="repeat" HeightRequest="20" />
+                <dxe:ComboBoxEdit Grid.Row="6" Grid.Column="1" LabelText="Frequency" ItemsSource="{Binding RepeatEvent}" SelectedValue="{Binding SelectedRepeatEvent}" SelectionChangedCommand="{Binding ChangeRepeatFrequencyCommand}"
+                  ValueMember="Value" DisplayMember="Description"/>
+
+
+
+
+                <dxe:FilterChipGroup Grid.Row="7" Grid.Column="1" IsVisible="{Binding ShowWeekInfo}" ItemsSource="{Binding Days}" SelectedItems="{Binding SelectedDays, Mode=TwoWay}"/>
 
             </Grid>
         </VerticalStackLayout>

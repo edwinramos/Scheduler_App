@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,8 @@ namespace DXMauiApp1.Models
         public string ColorCode { get; set; }
         [Ignore]
         public Color Color { get; set; }
+
+        [OneToMany]
+        public List<Event> Events { get; set; }
     }
 }
